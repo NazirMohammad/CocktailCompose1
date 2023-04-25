@@ -5,33 +5,28 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.cocktailcompose.data.model.DrinkModelX
-import com.example.cocktailcompose.data.model.NewDrinkModel
-import kotlinx.coroutines.flow.observeOn
 
 
 @Composable
 fun DrinksScreen(
-
+//mianScreen of homeviewmodel//l
     mainScreenViewModel: HomeViewModel = hiltViewModel()
 
 ){
@@ -65,7 +60,9 @@ fun DrinkItem(drink: DrinkModelX) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
+
                 .height(100.dp)
+                .background(color = Color.Transparent)
 
                 .wrapContentSize(align = Alignment.Center),
 
@@ -89,17 +86,19 @@ fun DrinkItem(drink: DrinkModelX) {
             ) {
                 Text(
 
+                    modifier = Modifier.align(CenterHorizontally),
+
                     text = "${drink.strDrink}",
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
-                    textAlign = TextAlign.Center,
 
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
 
                 Text(
+                    modifier = Modifier.align(CenterHorizontally),
                     text = "${drink.strCategory}",
                     color = Color.Black,
                     fontSize = 16.sp,
